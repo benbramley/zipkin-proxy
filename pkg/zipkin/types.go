@@ -1,5 +1,10 @@
 package zipkin
 
+import (
+	"fmt"
+	"strconv"
+)
+
 // Spans represents a collection of traces
 type Spans []Span
 
@@ -9,11 +14,17 @@ type Span struct {
 	Name              string             `json:"name"`
 	ParentID          string             `json:"parentId"`
 	ID                string             `json:"id"`
-	Timestamp         int                `json:"timestamp"`
-	Duration          int                `json:"duration"`
+	Timestamp         int64              `json:"timestamp"`
+	Duration          int64              `json:"duration"`
 	Debug             bool               `json:"debug"`
 	Annotations       []Annotation       `json:"annotations"`
 	BinaryAnnotations []BinaryAnnotation `json:"binaryAnnotations"`
+}
+
+// Returns the TraceID for the span as a uint64 representation
+// by parsing the hex encoded number
+func (s Span) TraceIDInt() (uint64, error) {
+	return strconv.ParseUint(fmt.Sprintf("0x%s", s.TraceID), 0, 64)
 }
 
 // BinaryAnnotation represents an OpenZipkin binary annotation message
