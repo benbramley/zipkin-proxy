@@ -3,6 +3,12 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "tuCz3k+tWEgzfuWpiB8k+adLhRg=",
+			"path": "git.apache.org/thrift.git/lib/go/thrift",
+			"revision": "39310dad793ca69b4b7217a3b54430e682e5e2a4",
+			"revisionTime": "2017-09-25T20:22:33Z"
+		},
+		{
 			"checksumSHA1": "z9ckOyaoHErgXLQDx514AOMxdeo=",
 			"path": "github.com/Sirupsen/logrus",
 			"revision": "abc6f20dabf4b10195f233ad21ea6c5ba33acae0",
@@ -57,6 +63,12 @@
 			"path": "github.com/urfave/cli",
 			"revision": "7fb9c86b14e6a702a4157ccb5a863f07d844a207",
 			"revisionTime": "2017-09-11T04:08:19Z"
+		},
+		{
+			"checksumSHA1": "Y+HGqEkYM15ir+J93MEaHdyFy0c=",
+			"path": "golang.org/x/net/context",
+			"revision": "3da985ce5951d99de868be4385f21ea6c2b22f24",
+			"revisionTime": "2017-05-27T09:53:06Z"
 		},
 		{
 			"checksumSHA1": "CoRxz7vk573Zu/UcMS4PzpAsv3w=",

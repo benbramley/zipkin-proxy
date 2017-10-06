@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/namely/zipkin-proxy/cmd/zipkinproxy/actions"
+	"github.com/Sirupsen/logrus"
 	"github.com/urfave/cli"
+
+	"github.com/namely/zipkin-proxy/cmd/zipkinproxy/actions"
 )
 
 func main() {
@@ -17,4 +19,8 @@ func main() {
 		fmt.Fprintf(os.Stderr, "error: %s", err.Error())
 		os.Exit(1)
 	}
+}
+
+func init() {
+	logrus.SetFormatter(&logrus.JSONFormatter{})
 }
