@@ -7,5 +7,5 @@ import "github.com/namely/zipkin-proxy/pkg/zipkin"
 type Interface interface {
 	// SendSpan should send the span to another APM monitoring service
 	// like DataDog or similar
-	SendSpan(span zipkin.Span) error
+	SendSpan(span *zipkin.Span) error
 }

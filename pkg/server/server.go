@@ -3,6 +3,7 @@ package server
 import (
 	"net/http"
 
+	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/mux"
 
 	"github.com/namely/zipkin-proxy/pkg/destination"
@@ -28,6 +29,7 @@ func NewServer(listenOn string, dest destination.Interface) *Server {
 func (s *Server) Start() error {
 	r := mux.NewRouter()
 	r.Handle("/api/v1/spans", s.handler).Methods(http.MethodPost)
+	logrus.Info("starting server")
 
 	return http.ListenAndServe(s.listenOn, r)
 }

@@ -35,18 +35,16 @@ func (h *handler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	// allocate all spans at once in one big block of memory.
-	spans := make([]zipkin.Span, size)
-
 	statusCode := http.StatusAccepted
 	for idx := 0; idx < size; idx++ {
-		if err := spans[idx].Read(protocol); err != nil {
+		span := new(zipkin.Span)
+		if err := span.Read(protocol); err != nil {
 			logrus.WithError(err).Error()
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		if err := h.destination.SendSpan(spans[idx]); err != nil {
+		if err := h.destination.SendSpan(span); err != nil {
 			err = errors.Wrap(err, "could not send span to destination")
 			logrus.WithError(err).Error("error shipping span")
 			statusCode = http.StatusInsufficientStorage
